@@ -37,7 +37,7 @@ header {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Add color to transition */
 
     /* Initial text color for transparent header */
-    color: black; /* Slightly transparent white text */
+    color: white; /* Slightly transparent white text */
 
 }
 header .logo {
