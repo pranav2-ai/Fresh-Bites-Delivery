@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh Bites</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="shortcut icon" type="icon" href="logo/logo.png">
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+
+</head>
+<body style="padding-top: 0px;">
+  <header>
+    <div class="logo" tabindex="0">Fresh Bites</div>
+    <nav>
+      <ul>
+        <li tabindex="0" id="navHomeLink">Home</li>
+        <li tabindex="0" id="navMenuLink">Menu</li>
+        <li tabindex="0" id="navContactLink">Contact</li>
+        <li tabindex="0" id="navAboutLink">About</li>
+      </ul>
+    </nav>
+    <button id="cartButton" aria-label="Open cart" aria-haspopup="true" aria-controls="cartPanel" aria-expanded="false">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2zM17 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2zM7.82 11L5 4H2v2h2l3.43 7.59-1.18 2.36c-.17.35-.25.74-.2 1.12.11.74.79 1.29 1.55 1.29h12v-2h-11l.68-1.36h7.96a1 1 0 00.92-.62l3.34-7H7.82z"></path>
+      </svg>
+      <span id="cartCount" aria-live="polite" aria-atomic="true">0</span>
+    </button>
+  </header>
+
+  <section class="hero" aria-label="Delicious food banner" id="home">
+    <h1>Delicious Food Delivered Fast</h1>
+    <p>Experience your favorite meals from the best restaurants right at your doorstep.</p>
+    <button id="orderNowBtn" aria-label="Order Now Button">Order Now</button>
+  </section>
+
+  <main id="mainContent">
+    <h2 class="section-title" id="menuTitle">Our Menu</h2>
+    <div class="filter-menu" role="group" aria-label="Food category filter">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="pizza">Pizza</button>
+      <button class="filter-button" data-filter="burger">Burger</button>
+      <button class="filter-button" data-filter="salad">Salad</button>
+      <button class="filter-button" data-filter="dessert">Dessert</button>
+      <button class="filter-button" data-filter="drinks">Drinks</button>
+      <button class="filter-button" data-filter="rice">Rice</button>
+      <button class="filter-button" data-filter="starter">Starter</button>
+      <button class="filter-button" data-filter="sushi">Sushi</button>
+      <button class="filter-button" data-filter="pasta">Pasta</button>
+    </div>
+    <section class="food-grid" aria-live="polite" aria-label="Food items listing"></section>
+  </main>
+
+  <div id="overlay" tabindex="-1"></div>
+
+  <aside id="cartPanel" aria-label="Shopping Cart" aria-hidden="true">
+    <header>
+      Your Cart
+      <button id="cartCloseBtn" aria-label="Close cart">&times;</button>
+    </header>
+
+    <section id="deliveryInfo" aria-label="Delivery information">
+      <label for="deliveryName">Your Name:</label>
+      <input type="text" id="deliveryName" placeholder="Enter your name" />
+
+      <label for="deliveryPhone">Phone Number:</label>
+      <input type="tel" id="deliveryPhone" placeholder="Enter your phone number" />
+
+      <label for="deliveryLocation">Delivery Location:</label>
+      <input type="text" id="deliveryLocation" autocomplete="address-line1" placeholder="Enter your address or location" aria-describedby="estimatedTime" />
+
+      <div id="estimatedTime" aria-live="polite" aria-atomic="true"></div>
+    </section>
+
+
+    <div id="cartItems" role="list"></div>
+    <div id="cartFooter" aria-live="polite" aria-atomic="true">
+      <div>Total:</div>
+      <div id="cartTotalPrice">₹0.00</div>
+    </div>
+    <div id="checkoutContainer">
+      <button id="checkoutBtn" aria-label="Proceed to checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">Get in Touch</h2>
+    <p>Have questions, feedback, or need assistance? Reach out to us!</p>
+    <div class="contact-details">
+      <p><strong>Email:</strong> contact@freshbites.example.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Address:</strong> 123 Foodie Lane, Flavor Town, India</p>
+    </div>
+  </section>
+
+  <footer id="pageFooter">
+    <p>&copy; 2025 Fresh Bites. All Rights Reserved.</p>
+    <p>Contact us: contact@freshbites.example.com</p>
+    <div class="social-icons">
+  <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+  <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+  </footer>
+
+  <!-- Animated Order Confirmation Modal -->
+  <div id="orderConfirmation" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <h2>🎉 Order Confirmed!</h2>
+      <div id="orderSummary"></div>
+      <button id="closeOrderModal">Close</button>
+    </div>
+  </div>
+
+  <!-- Loading Delivery Animation -->
+  <!-- Delivery Van Loading Animation -->
+  <div id="deliveryLoading" class="delivery-loading-overlay" aria-hidden="true">
+    <div class="van-animation">
+      <dotlottie-player
+        src="https://lottie.host/2652f973-a534-4fc0-8f0e-4cb3d590666e/6dYUeZGPQ2.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay>
+      </dotlottie-player>
+    </div>
+  </div>
+
+
+
+  <script src="scripts.js"></script>
+</body>
+</html>
